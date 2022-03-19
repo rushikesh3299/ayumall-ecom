@@ -4,14 +4,14 @@ export const Footer = () => {
   return (
     <div className="footer">
       <div className="footer-intro">
-        Made with <i className="fas fa-heart"></i> by{" "}
+        Made with <i className="fas fa-heart"></i> by
         <a
           className="td-ul"
           href="https://rushikeshchougule.netlify.app/"
           target="_blank"
         >
           Rushikesh
-        </a>{" "}
+        </a>
       </div>
       <div className="footer-icon">
         <a href="https://github.com/rushikesh3299" target="_blank">
