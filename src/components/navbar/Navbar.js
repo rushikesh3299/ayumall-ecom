@@ -1,7 +1,7 @@
 import "./navbar.css";
 import { useState } from "react";
 
-function Navbar() {
+export const Navbar = () => {
   const [dispMobNav, setDispMobNav] = useState(false);
 
   return (
@@ -15,7 +15,7 @@ function Navbar() {
             ></i>
           </a>
           <img
-            src="https://ayumall-screens.netlify.app/Assets/AyuMallHZ0.png"
+            src="images/AyuMallHZ0.png"
             className="navbar-ayumall-logo"
             alt="AyuMall logo"
           />
@@ -84,6 +84,4 @@ function Navbar() {
       </div>
     </div>
   );
-}
-
-export default Navbar;
+};

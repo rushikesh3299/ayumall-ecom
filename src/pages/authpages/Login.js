@@ -1,14 +1,10 @@
 import React from "react";
 import "./login.css";
 
-function Login() {
+export const Login = () => {
   return (
     <div className="login-container">
-      <img
-        className="login-img"
-        src="https://ayumall-screens.netlify.app/Assets/AyuMall.png"
-        alt="Ayumall logo"
-      />
+      <img className="login-img" src="images/AyuMall.png" alt="Ayumall logo" />
       <h2>WelCome!</h2>
       <h3>Enter Your info below to Login</h3>
       <div className="login-inputs">
@@ -24,6 +20,4 @@ function Login() {
       </div>
     </div>
   );
-}
-
-export default Login;
+};

@@ -1,10 +1,10 @@
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
-import Navbar from "./components/navbar/Navbar";
-import Login from "./pages/authpages/Login";
-import Signup from "./pages/authpages/Signup";
+import { Navbar } from "./components/navbar/Navbar";
+import { Login } from "./pages/authpages/Login";
+import { Signup } from "./pages/authpages/Signup";
 
-function App() {
+export const App = () => {
   return (
     <div className="App">
       <Navbar />
@@ -14,6 +14,4 @@ function App() {
       </Routes>
     </div>
   );
-}
-
-export default App;
+};
