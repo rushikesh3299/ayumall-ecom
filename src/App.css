@@ -1,5 +1,5 @@
 @import url("https://saraniui.netlify.app/common_css/sarani_ui.css");
-
+@import url("https://unpkg.com/mockman-js@latest/dist/style.css");
 /*Reset CSS*/
 * {
   margin: 0;
