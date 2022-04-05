@@ -1,17 +1,19 @@
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
-import { Navbar } from "./components/navbar/Navbar";
-import { Login } from "./pages/authpages/Login";
-import { Signup } from "./pages/authpages/Signup";
+import { Navbar, Footer } from "./components/index";
+import { Login, Signup, ProductPage, Home } from "./pages/index";
 import Mockman from "mockman-js";
+
 export const App = () => {
   return (
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
-        <Route path="mockman" element={<Mockman />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<ProductPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>
   );

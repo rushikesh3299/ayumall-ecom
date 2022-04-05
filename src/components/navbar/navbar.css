@@ -22,6 +22,13 @@
   gap: 2rem;
 }
 
+.navbar-left-items div,
+.navbar-right-items div,
+.mobile-nav-container div,
+.mobile-nav-menu-container div {
+  cursor: pointer;
+}
+
 .navbar-left-items a:hover {
   color: var(--primary-color);
 }
