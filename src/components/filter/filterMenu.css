@@ -1,0 +1,65 @@
+.filter-section {
+  width: 250px;
+  height: auto;
+  padding: 1rem 2rem;
+}
+
+.filter-section-close {
+  display: none;
+}
+
+.filter-title-bar {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.filter-price,
+.filter-categories,
+.filter-brand {
+  padding: 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.sort-title,
+.categories-title,
+.brand-title {
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+}
+
+.sort-div input,
+.categories-div input,
+.brand-div input {
+  margin-right: 0.5rem;
+}
+
+.filter-section label {
+  display: block;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 798px) {
+  .filter-section {
+    display: none;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    z-index: 7;
+    background: var(--pure-white-color);
+    box-shadow: 0px 0px 0.5rem var(--text-color-light);
+  }
+
+  .filter-section-display {
+    display: block;
+  }
+
+  .filter-section-close {
+    display: block;
+    margin-bottom: 1rem;
+    margin-left: 90%;
+  }
+}

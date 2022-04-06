@@ -8,23 +8,19 @@ export const Navbar = () => {
     <div>
       <div className="navbar">
         <div className="navbar-left-items">
-          <a className="navbar-menu-icon" href="#">
+          <div className="navbar-menu-icon">
             <i
               className="fas fa-bars"
               onClick={() => setDispMobNav(() => true)}
             ></i>
-          </a>
+          </div>
           <img
             src="images/AyuMallHZ0.png"
             className="navbar-ayumall-logo"
             alt="AyuMall logo"
           />
-          <a className="nav-link" href="#">
-            Home
-          </a>
-          <a className="nav-link" href="#">
-            Shop Now
-          </a>
+          <div className="nav-link">Home</div>
+          <div className="nav-link">Shop Now</div>
         </div>
         <div className="navbar-right-items">
           <div className="navbar-search-container">
@@ -35,18 +31,18 @@ export const Navbar = () => {
               placeholder="Search here"
             />
           </div>
-          <a className="nav-icon-link nav-icon-link-login" href="#">
+          <div className="nav-icon-link nav-icon-link-login">
             <i className="fas fa-user-circle"></i>
             <span className="nav-icon-name">Login</span>
-          </a>
-          <a className="nav-icon-link" href="#">
+          </div>
+          <div className="nav-icon-link">
             <i className="fas fa-heart"></i>
             <span className="nav-icon-name">WishList</span>
-          </a>
-          <a className="nav-icon-link" href="#">
+          </div>
+          <div className="nav-icon-link">
             <i className="fas fa-shopping-cart"></i>
             <span className="nav-icon-name">Cart</span>
-          </a>
+          </div>
         </div>
       </div>
 
@@ -54,31 +50,31 @@ export const Navbar = () => {
         className={dispMobNav ? "mobile-nav mobile-nav-display" : "mobile-nav"}
       >
         <div className="mobile-nav-container">
-          <a href="#" className="mobile-nav-close">
+          <div className="mobile-nav-close">
             <i
               className="fas fa-times"
               onClick={() => setDispMobNav(() => false)}
             ></i>
-          </a>
+          </div>
           <div className="mobile-nav-login">
             <i className="fas fa-user-circle"></i>
           </div>
         </div>
         <div className="mobile-nav-menu-container">
           <div className="mobile-nav-menu">
-            <a href="#">Home</a>
+            <div>Home</div>
           </div>
           <div className="mobile-nav-menu">
-            <a href="#">Shop Now</a>
+            <div>Shop Now</div>
           </div>
           <div className="mobile-nav-menu">
-            <a href="#">Orders</a>
+            <div>Orders</div>
           </div>
           <div className="mobile-nav-menu">
-            <a href="#">Best Sellers</a>
+            <div>Best Sellers</div>
           </div>
           <div className="mobile-nav-menu">
-            <a href="#">Trending</a>
+            <div>Trending</div>
           </div>
         </div>
       </div>
