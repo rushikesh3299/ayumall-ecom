@@ -18,7 +18,7 @@
 
 .filter-price,
 .filter-categories,
-.filter-brand {
+.filter-rating {
   padding: 1rem 0;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--primary-color);
@@ -26,20 +26,25 @@
 
 .sort-title,
 .categories-title,
-.brand-title {
+.rating-title {
   font-weight: bold;
   padding-bottom: 0.5rem;
 }
 
 .sort-div input,
 .categories-div input,
-.brand-div input {
+.rating-div input {
   margin-right: 0.5rem;
 }
 
 .filter-section label {
   display: block;
   font-size: 16px;
+}
+
+.filter-clear:hover {
+  cursor: pointer;
+  color: var(--text-color-light);
 }
 
 @media only screen and (max-width: 798px) {
