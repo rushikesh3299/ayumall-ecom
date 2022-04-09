@@ -1,6 +1,10 @@
 import "./home.css";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useProduct } from "../../context/product-context";
 
 export const Home = () => {
+  const { productState, productDispatch } = useProduct();
+  const navigate = useNavigate();
   return (
     <div className="home-page-container">
       <div className="banner">
@@ -11,16 +15,22 @@ export const Home = () => {
         <p className="banner-discount">
           Upto <span>25% Off</span> on all products
         </p>
-        <a href="productpage.html" className="banner-shop-btn">
+        <NavLink className="banner-shop-btn" to="/products">
           Shop Now
-        </a>
+        </NavLink>
       </div>
 
       <div className="featured-category">
         <div className="featured-title">Featured Categories</div>
         <div className="half-border"></div>
         <div className="featured-category-section">
-          <div className="featured-card">
+          <div
+            className="featured-card"
+            onClick={() => {
+              productDispatch({ type: "CATEGORIZE", payload: "Avaleha" });
+              navigate("./products");
+            }}
+          >
             <div className="featured-card-title">Avaleha</div>
             <div className="featured-card-info">
               Avaleha or Lehya is a semi-solid preparation of drugs, prepared
@@ -28,7 +38,13 @@ export const Home = () => {
               prescribed juices or decoction.
             </div>
           </div>
-          <div className="featured-card">
+          <div
+            className="featured-card"
+            onClick={() => {
+              productDispatch({ type: "CATEGORIZE", payload: "Rasayana" });
+              navigate("./products");
+            }}
+          >
             <div className="featured-card-title">Rasayana</div>
             <div className="featured-card-info">
               Rasayana is an Ayurvedic tonic which helps in maintenance &
@@ -36,7 +52,13 @@ export const Home = () => {
               levels from macro to micro-cellular level.
             </div>
           </div>
-          <div className="featured-card">
+          <div
+            className="featured-card"
+            onClick={() => {
+              productDispatch({ type: "CATEGORIZE", payload: "Churna" });
+              navigate("./products");
+            }}
+          >
             <div className="featured-card-title">Churna</div>
             <div className="featured-card-info">
               Churna is a mixture of powdered herbs and or minerals used in
@@ -44,7 +66,13 @@ export const Home = () => {
               mixture of more herbs.
             </div>
           </div>
-          <div className="featured-card">
+          <div
+            className="featured-card"
+            onClick={() => {
+              productDispatch({ type: "CATEGORIZE", payload: "Vati" });
+              navigate("./products");
+            }}
+          >
             <div className="featured-card-title">Vati</div>
             <div className="featured-card-info">
               Vati can also be called as ayurvedic pill or tablet. Vati is

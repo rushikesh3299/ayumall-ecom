@@ -44,6 +44,7 @@
   font-weight: 400;
   border: none;
   border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .banner-shop-btn:hover {
@@ -101,6 +102,7 @@
   border-radius: 1rem;
   box-shadow: 5px 2px 15px var(--shadow-color);
   transition: transform 0.4s;
+  cursor: pointer;
 }
 
 .featured-card:hover {
