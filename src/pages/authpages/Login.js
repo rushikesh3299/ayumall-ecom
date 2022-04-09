@@ -1,5 +1,6 @@
 import React from "react";
 import "./login.css";
+import { NavLink } from "react-router-dom";
 
 export const Login = () => {
   return (
@@ -15,7 +16,9 @@ export const Login = () => {
           <div>
             <a href="#">Forgot Password?</a>
           </div>
-          <div>New to AyuMall? Sign Up</div>
+          <div>
+            New to AyuMall? <NavLink to="/signup">Sign Up</NavLink>
+          </div>
         </div>
       </div>
     </div>

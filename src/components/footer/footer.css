@@ -1,6 +1,7 @@
 .footer {
   text-align: center;
   background: var(--light-gray-bg);
+  margin-top: 2rem;
 }
 
 .footer-intro {

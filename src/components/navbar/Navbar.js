@@ -1,10 +1,11 @@
 import "./navbar.css";
 import { useProduct } from "../../context/product-context";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export const Navbar = () => {
   const [dispMobNav, setDispMobNav] = useState(false);
-  const { showFilterMobileNav, setShowFilterMobileNav } = useProduct();
+  const { setShowFilterMobileNav } = useProduct();
   return (
     <div>
       <div className="navbar">
@@ -20,8 +21,12 @@ export const Navbar = () => {
             className="navbar-ayumall-logo"
             alt="AyuMall logo"
           />
-          <div className="nav-link">Home</div>
-          <div className="nav-link">Shop Now</div>
+          <NavLink className="nav-link" to="/">
+            Home
+          </NavLink>
+          <NavLink className="nav-link" to="/products">
+            Shop Now
+          </NavLink>
         </div>
         <div className="navbar-right-items">
           <div className="navbar-search-container">
@@ -32,18 +37,18 @@ export const Navbar = () => {
               placeholder="Search here"
             />
           </div>
-          <div className="nav-icon-link nav-icon-link-login">
+          <NavLink className="nav-icon-link nav-icon-link-login" to="/login">
             <i className="fas fa-user-circle"></i>
             <span className="nav-icon-name">Login</span>
-          </div>
-          <div className="nav-icon-link">
+          </NavLink>
+          <NavLink className="nav-icon-link" to="/">
             <i className="fas fa-heart"></i>
             <span className="nav-icon-name">WishList</span>
-          </div>
-          <div className="nav-icon-link">
+          </NavLink>
+          <NavLink className="nav-icon-link" to="/">
             <i className="fas fa-shopping-cart"></i>
             <span className="nav-icon-name">Cart</span>
-          </div>
+          </NavLink>
         </div>
       </div>
 
