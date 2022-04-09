@@ -2,10 +2,25 @@ import { useProduct } from "../../context/product-context";
 import "./filterMenu.css";
 
 export const FilterMenu = () => {
-  const { productState, productDispatch } = useProduct();
+  const {
+    productState,
+    productDispatch,
+    showFilterMobileNav,
+    setShowFilterMobileNav,
+  } = useProduct();
+
   return (
-    <div className="filter-section">
-      <div className="filter-section-close">
+    <div
+      className={
+        showFilterMobileNav
+          ? "filter-section filter-section-display"
+          : "filter-section"
+      }
+    >
+      <div
+        className="filter-section-close"
+        onClick={() => setShowFilterMobileNav(false)}
+      >
         <i className="fas fa-times"></i>
       </div>
       <div className="filter-title-bar">

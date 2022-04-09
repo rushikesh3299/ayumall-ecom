@@ -1,9 +1,10 @@
 import "./navbar.css";
+import { useProduct } from "../../context/product-context";
 import { useState } from "react";
 
 export const Navbar = () => {
   const [dispMobNav, setDispMobNav] = useState(false);
-
+  const { showFilterMobileNav, setShowFilterMobileNav } = useProduct();
   return (
     <div>
       <div className="navbar">
@@ -75,6 +76,12 @@ export const Navbar = () => {
           </div>
           <div className="mobile-nav-menu">
             <div>Trending</div>
+          </div>
+          <div
+            className="mobile-nav-menu"
+            onClick={() => setShowFilterMobileNav(true)}
+          >
+            <div>Filter</div>
           </div>
         </div>
       </div>
