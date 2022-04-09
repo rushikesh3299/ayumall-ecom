@@ -1,12 +1,42 @@
 import "./products.css";
+import { Rating } from "../index";
 import { useProduct } from "../../context/product-context";
 
 export const Products = () => {
-  const { productList } = useProduct();
+  const { initialProductList, productState } = useProduct();
+
+  const sortProducts = (sortBy, productList) => {
+    if (sortBy === "HIGH_TO_LOW")
+      return [...productList].sort((a, b) => b.price - a.price);
+    else return [...productList].sort((a, b) => a.price - b.price);
+  };
+
+  const categorizeProducts = (showCategory, productList) => {
+    return [...productList].filter((item) =>
+      showCategory.includes(item.categoryName)
+    );
+  };
+
+  const aboveRateProducts = (showRating, productList) => {
+    return [...productList].filter((item) => item.ratings >= showRating);
+  };
+
+  const sortedProducts = productState.sortBy
+    ? sortProducts(productState.sortBy, initialProductList)
+    : [...initialProductList];
+
+  const categorizedProducts = productState.showCategory.length
+    ? categorizeProducts(productState.showCategory, sortedProducts)
+    : [...sortedProducts];
+
+  const aboveRatedProducts =
+    productState.showRating > 0
+      ? aboveRateProducts(productState.showRating, categorizedProducts)
+      : [...categorizedProducts];
 
   return (
     <div className="product-list-section">
-      {productList.map((item) => (
+      {aboveRatedProducts.map((item) => (
         <div className="product-card" key={item._id}>
           <div className="product-card-img">
             <img src={item.image} alt="" />
@@ -20,23 +50,7 @@ export const Products = () => {
               <div>(15% OFF)</div>
             </div>
             <div className="product-card-quantity">{item.weight}</div>
-            <div className="product-card-rating-bar">
-              <span>
-                <i className="fas fa-star"></i>
-              </span>
-              <span>
-                <i className="fas fa-star"></i>
-              </span>
-              <span>
-                <i className="fas fa-star"></i>
-              </span>
-              <span>
-                <i className="fas fa-star-half-alt"></i>
-              </span>
-              <span>
-                <i className="far fa-star"></i>
-              </span>
-            </div>
+            <Rating productRating={item.ratings} />
             <button className="product-card-btn-add">Add to cart</button>
           </div>
         </div>
