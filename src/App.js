@@ -1,13 +1,18 @@
 import "./App.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Navbar, Footer } from "./components/index";
 import { Login, Signup, ProductPage, Home, ErrorPage } from "./pages/index";
 import Mockman from "mockman-js";
 
 export const App = () => {
+  const location = useLocation();
+
   return (
     <div className="App">
-      <Navbar />
+      {location.pathname != "/login" && location.pathname != "/signup" && (
+        <Navbar />
+      )}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductPage />} />
@@ -16,7 +21,10 @@ export const App = () => {
         <Route path="/mockman" element={<Mockman />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-      <Footer />
+
+      {location.pathname != "/login" && location.pathname != "/signup" && (
+        <Footer />
+      )}
     </div>
   );
 };
