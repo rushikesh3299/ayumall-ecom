@@ -1,5 +1,5 @@
 import "./navbar.css";
-import { useProduct } from "../../context/product-context";
+import { useProduct } from "../../context/index";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
