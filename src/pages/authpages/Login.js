@@ -44,6 +44,18 @@ export const Login = () => {
         <button className="login-btn" type="submit">
           Login
         </button>
+        <button
+          className="login-btn dummy"
+          onClick={(e) =>
+            setLoginFormData({
+              ...loginFormData,
+              email: "test@gmail.com",
+              password: "test123",
+            })
+          }
+        >
+          Login with dummy creds
+        </button>
         <div className="login-footer">
           <div>
             <a href="#">Forgot Password?</a>

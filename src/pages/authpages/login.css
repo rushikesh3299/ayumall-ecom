@@ -37,6 +37,16 @@
   font-weight: 700;
 }
 
+.login-btn.dummy {
+  color: var(--primary-color);
+  background: transparent;
+  border: 2px solid var(--primary-color);
+}
+
+.login-btn.dummy:hover {
+  background: var(--text-color-white);
+}
+
 .login-btn:hover {
   background: var(--primary-color-hover);
 }
