@@ -1,11 +1,13 @@
 import "./navbar.css";
-import { useProduct } from "../../context/product-context";
+import { useProduct, useLogin } from "../../context/index";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export const Navbar = () => {
+  const location = useLocation();
   const [dispMobNav, setDispMobNav] = useState(false);
   const { setShowFilterMobileNav } = useProduct();
+  const { userData } = useLogin();
   return (
     <div>
       <div className="navbar">
@@ -21,12 +23,12 @@ export const Navbar = () => {
             className="navbar-ayumall-logo"
             alt="AyuMall logo"
           />
-          <NavLink className="nav-link" to="/">
+          <Link className="nav-link" to="/">
             Home
-          </NavLink>
-          <NavLink className="nav-link" to="/products">
+          </Link>
+          <Link className="nav-link" to="/products">
             Shop Now
-          </NavLink>
+          </Link>
         </div>
         <div className="navbar-right-items">
           <div className="navbar-search-container">
@@ -37,18 +39,26 @@ export const Navbar = () => {
               placeholder="Search here"
             />
           </div>
-          <NavLink className="nav-icon-link nav-icon-link-login" to="/login">
-            <i className="fas fa-user-circle"></i>
-            <span className="nav-icon-name">Login</span>
-          </NavLink>
-          <NavLink className="nav-icon-link" to="/">
+          {!userData.isLoggedIn && (
+            <Link className="nav-icon-link nav-icon-link-login" to="/login">
+              <i className="fas fa-user-circle"></i>
+              <span className="nav-icon-name">Login</span>
+            </Link>
+          )}
+          {userData.isLoggedIn && (
+            <Link className="nav-icon-link nav-icon-link-login" to="/login">
+              <i className="fas fa-user-circle"></i>
+              <span className="nav-icon-name">LogOut</span>
+            </Link>
+          )}
+          <Link className="nav-icon-link" to="/">
             <i className="fas fa-heart"></i>
             <span className="nav-icon-name">WishList</span>
-          </NavLink>
-          <NavLink className="nav-icon-link" to="/">
+          </Link>
+          <Link className="nav-icon-link" to="/">
             <i className="fas fa-shopping-cart"></i>
             <span className="nav-icon-name">Cart</span>
-          </NavLink>
+          </Link>
         </div>
       </div>
 
@@ -68,10 +78,10 @@ export const Navbar = () => {
         </div>
         <div className="mobile-nav-menu-container">
           <div className="mobile-nav-menu">
-            <div>Home</div>
+            <Link to="/">Home</Link>
           </div>
           <div className="mobile-nav-menu">
-            <div>Shop Now</div>
+            <Link to="/products">Shop Now</Link>
           </div>
           <div className="mobile-nav-menu">
             <div>Orders</div>
@@ -82,12 +92,14 @@ export const Navbar = () => {
           <div className="mobile-nav-menu">
             <div>Trending</div>
           </div>
-          <div
-            className="mobile-nav-menu"
-            onClick={() => setShowFilterMobileNav(true)}
-          >
-            <div>Filter</div>
-          </div>
+          {location.pathname === "/products" && (
+            <div
+              className="mobile-nav-menu"
+              onClick={() => setShowFilterMobileNav(true)}
+            >
+              <div>Filter</div>
+            </div>
+          )}
         </div>
       </div>
     </div>

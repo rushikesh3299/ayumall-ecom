@@ -1,6 +1,6 @@
 import "./home.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useProduct } from "../../context/product-context";
+import { useProduct } from "../../context/index";
 
 export const Home = () => {
   const { productState, productDispatch } = useProduct();

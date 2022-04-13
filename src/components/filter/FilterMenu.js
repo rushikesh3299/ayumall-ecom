@@ -1,4 +1,4 @@
-import { useProduct } from "../../context/product-context";
+import { useProduct } from "../../context/index";
 import "./filterMenu.css";
 
 export const FilterMenu = () => {

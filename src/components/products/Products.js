@@ -1,6 +1,6 @@
 import "./products.css";
 import { Rating } from "../index";
-import { useProduct } from "../../context/product-context";
+import { useProduct } from "../../context/index";
 
 export const Products = () => {
   const { initialProductList, productState } = useProduct();

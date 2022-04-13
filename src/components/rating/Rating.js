@@ -1,3 +1,4 @@
+import { v4 as uuid } from "uuid";
 export const Rating = ({ productRating }) => {
   const filledStar = Math.floor(productRating);
   const emptyStar = Math.floor(5 - productRating);
@@ -17,7 +18,7 @@ export const Rating = ({ productRating }) => {
   return (
     <div className="product-card-rating-bar">
       {starArray.map((item) => (
-        <span>{item}</span>
+        <span key={uuid()}>{item}</span>
       ))}
     </div>
   );
