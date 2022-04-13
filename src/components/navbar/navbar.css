@@ -130,5 +130,10 @@
 }
 
 .mobile-nav-menu {
-  padding: 1rem;
+  padding: 0.25rem;
+  margin: 0.75rem;
+}
+
+.mobile-nav-menu:hover {
+  font-weight: bold;
 }
