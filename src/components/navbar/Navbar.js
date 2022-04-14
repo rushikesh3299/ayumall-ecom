@@ -2,12 +2,16 @@ import "./navbar.css";
 import { useProduct, useLogin } from "../../context/index";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-
 export const Navbar = () => {
   const location = useLocation();
   const [dispMobNav, setDispMobNav] = useState(false);
   const { setShowFilterMobileNav } = useProduct();
-  const { userData } = useLogin();
+  const { userData, setUserData } = useLogin();
+
+  const logoutHandler = () => {
+    setUserData({ ...userData, isLoggedIn: false, userToken: null });
+    localStorage.removeItem("token");
+  };
   return (
     <div>
       <div className="navbar">
@@ -39,16 +43,18 @@ export const Navbar = () => {
               placeholder="Search here"
             />
           </div>
-          {!userData.isLoggedIn && (
+          {userData.isLoggedIn ? (
+            <div
+              className="nav-icon-link nav-icon-link-login"
+              onClick={() => logoutHandler(userData, setUserData)}
+            >
+              <i className="fas fa-user-circle"></i>
+              <span className="nav-icon-name">LogOut</span>
+            </div>
+          ) : (
             <Link className="nav-icon-link nav-icon-link-login" to="/login">
               <i className="fas fa-user-circle"></i>
               <span className="nav-icon-name">Login</span>
-            </Link>
-          )}
-          {userData.isLoggedIn && (
-            <Link className="nav-icon-link nav-icon-link-login" to="/login">
-              <i className="fas fa-user-circle"></i>
-              <span className="nav-icon-name">LogOut</span>
             </Link>
           )}
           <Link className="nav-icon-link" to="/">
@@ -77,6 +83,15 @@ export const Navbar = () => {
           </div>
         </div>
         <div className="mobile-nav-menu-container">
+          <div className="mobile-nav-menu">
+            {userData.isLoggedIn ? (
+              <div onClick={() => logoutHandler(userData, setUserData)}>
+                Logout
+              </div>
+            ) : (
+              <Link to="/login">Login</Link>
+            )}
+          </div>
           <div className="mobile-nav-menu">
             <Link to="/">Home</Link>
           </div>
