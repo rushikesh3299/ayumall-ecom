@@ -2,6 +2,7 @@ import "./navbar.css";
 import { useProduct, useLogin } from "../../context/index";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+
 export const Navbar = () => {
   const location = useLocation();
   const [dispMobNav, setDispMobNav] = useState(false);
@@ -12,6 +13,7 @@ export const Navbar = () => {
     setUserData({ ...userData, isLoggedIn: false, userToken: null });
     localStorage.removeItem("token");
   };
+
   return (
     <div>
       <div className="navbar">
@@ -61,7 +63,7 @@ export const Navbar = () => {
             <i className="fas fa-heart"></i>
             <span className="nav-icon-name">WishList</span>
           </Link>
-          <Link className="nav-icon-link" to="/">
+          <Link className="nav-icon-link" to="/cart">
             <i className="fas fa-shopping-cart"></i>
             <span className="nav-icon-name">Cart</span>
           </Link>

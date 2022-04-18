@@ -1,8 +1,11 @@
 import "./products.css";
 import { Rating } from "../index";
 import { useProduct } from "../../context/index";
+import { addToCart } from "../../services/cartservices/addToCart";
+import { useLogin } from "../../context/index";
 
 export const Products = () => {
+  const { userData } = useLogin();
   const { initialProductList, productState } = useProduct();
 
   const sortProducts = (sortBy, productList) => {
@@ -51,7 +54,12 @@ export const Products = () => {
             </div>
             <div className="product-card-quantity">{item.weight}</div>
             <Rating productRating={item.ratings} />
-            <button className="product-card-btn-add">Add to cart</button>
+            <button
+              className="product-card-btn-add"
+              onClick={() => addToCart(userData, item)}
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       ))}

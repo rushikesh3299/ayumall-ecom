@@ -1,0 +1,137 @@
+.cart-mgmt-title {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.cart-mgmt-section {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 748px) {
+  .cart-mgmt-section {
+    display: block;
+  }
+
+  .cart-mgmt-col2 {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.cart-mgmt-col1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cart-card {
+  display: flex;
+  padding: 1rem;
+  box-shadow: 0px 0px 0.5rem var(--text-color-light);
+}
+
+.cart-card-img img {
+  width: 160px;
+  height: 200px;
+}
+
+@media only screen and (max-width: 748px) {
+  .cart-card {
+    width: 330px;
+  }
+
+  .cart-card-img img {
+    width: 120px;
+    height: 160px;
+  }
+}
+
+.cart-card-price span {
+  font-size: 0.8rem;
+  text-decoration: line-through;
+}
+
+.cart-card-qty {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.cart-card-qty span {
+  width: 2.5rem;
+  height: 2rem;
+  border: 1px solid var(--light-gray-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-card-btn {
+  width: 2.5rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--text-color-light);
+  border-radius: 0.25rem;
+}
+
+.cart-card-wishlist-btn {
+  font-size: 1rem;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--text-color-light);
+  border-radius: 0.25rem;
+}
+
+.place-order-card {
+  padding: 1rem;
+  width: 17rem;
+}
+
+.place-order-coupan {
+  font-weight: bold;
+  padding: 0.5rem 0;
+}
+
+.place-order-coupan-input {
+  width: 100%;
+  border: 1px solid var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.price-details-title {
+  padding: 0.5rem 0;
+  font-weight: bold;
+}
+
+.place-order-btn {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+  background: var(--cta-color);
+  color: var(--text-color-white);
+  font-weight: bold;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.place-order-btn:hover {
+  background: var(--cta-color-hover);
+  cursor: pointer;
+}
+
+.price-details-container div {
+  display: flex;
+  justify-content: space-between;
+}
