@@ -1,40 +1,37 @@
 import "./cart.css";
-import { getCart } from "../../services/cartservices/getcart";
-import { useLogin } from "../../context/index";
-import { useEffect, useState } from "react";
+import { useCart } from "../../context/index";
 
 export const Cart = () => {
-  const { userData } = useLogin();
-  const [cartData, setCartData] = useState({});
+  const { initialCart } = useCart();
+  console.log(initialCart);
 
   return (
     <div className="cart-mgmt-container">
       <div className="cart-mgmt-title">My Cart</div>
       <div className="cart-mgmt-section">
         <div className="cart-mgmt-col1">
-          <div className="cart-card">
-            <div className="cart-card-img">
-              <img
-                src="https://www.sdlindia.com/consumerayurved/images/products/dp335cc332e2379db300fd92839ca6687a_crop.jpg"
-                alt="cart image"
-              />
-            </div>
-            <div className="cart-card-info">
-              <div className="cart-card-title">Swamala</div>
-              <div className="cart-card-brand">Dhootpapeshwar</div>
-              <div className="cart-card-price">
-                Rs.120 <span>Rs.138</span> (15% OFF)
+          {initialCart.map((item) => {
+            return (
+              <div className="cart-card">
+                <div className="cart-card-img">
+                  <img src={item.image} alt="cart image" />
+                </div>
+                <div className="cart-card-info">
+                  <div className="cart-card-title">{item.title}</div>
+                  <div className="cart-card-brand">{item.brand}</div>
+                  <div className="cart-card-price">{item.price} ₹</div>
+                  <div className="cart-card-qty">
+                    <button className="cart-card-btn">+</button>
+                    <span>3</span>
+                    <button className="cart-card-btn">-</button>
+                  </div>
+                  <button className="cart-card-wishlist-btn">
+                    Move to Wishlist
+                  </button>
+                </div>
               </div>
-              <div className="cart-card-qty">
-                <button className="cart-card-btn">+</button>
-                <span>3</span>
-                <button className="cart-card-btn">-</button>
-              </div>
-              <button className="cart-card-wishlist-btn">
-                Move to Wishlist
-              </button>
-            </div>
-          </div>
+            );
+          })}
         </div>
         <div className="cart-mgmt-col2">
           <div className="place-order-card">

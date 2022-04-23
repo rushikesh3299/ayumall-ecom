@@ -5,8 +5,12 @@ export const initialProducts = () => {
   const [initialProductList, setInitialProductList] = useState([]);
 
   useEffect(async () => {
-    const data = await axios.get("/api/products");
-    setInitialProductList(() => data.data.products);
+    try {
+      const data = await axios.get("/api/products");
+      setInitialProductList(() => data.data.products);
+    } catch (error) {
+      console.error("products not found", error);
+    }
   }, []);
 
   return initialProductList;
