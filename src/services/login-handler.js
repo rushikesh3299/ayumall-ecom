@@ -16,7 +16,7 @@ export const loginHandler = (
         setUserData({
           ...userData,
           isLoggedIn: true,
-          userToken: JSON.stringify(data.encodedToken),
+          userToken: data.encodedToken,
         });
         localStorage.setItem("token", JSON.stringify(data.encodedToken));
       }

@@ -61,7 +61,10 @@ export const Navbar = () => {
             <i className="fas fa-heart"></i>
             <span className="nav-icon-name">WishList</span>
           </Link>
-          <Link className="nav-icon-link" to="/">
+          <Link
+            className="nav-icon-link"
+            to={userData.isLoggedIn ? "/cart" : "/"}
+          >
             <i className="fas fa-shopping-cart"></i>
             <span className="nav-icon-name">Cart</span>
           </Link>

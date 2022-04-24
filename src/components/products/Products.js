@@ -1,9 +1,17 @@
 import "./products.css";
 import { Rating } from "../index";
-import { useProduct } from "../../context/index";
+import { useProduct, useLogin, useCart } from "../../context/index";
 
 export const Products = () => {
   const { initialProductList, productState } = useProduct();
+  const { userData } = useLogin();
+  const { addToCart } = useCart();
+
+  const addToCartHandler = (product) => {
+    if (userData.isLoggedIn) {
+      addToCart(product);
+    }
+  };
 
   const sortProducts = (sortBy, productList) => {
     if (sortBy === "HIGH_TO_LOW")
@@ -51,7 +59,12 @@ export const Products = () => {
             </div>
             <div className="product-card-quantity">{item.weight}</div>
             <Rating productRating={item.ratings} />
-            <button className="product-card-btn-add">Add to cart</button>
+            <button
+              className="product-card-btn-add"
+              onClick={() => addToCartHandler(item)}
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       ))}
