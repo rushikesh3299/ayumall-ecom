@@ -5,7 +5,8 @@ import "./cart.css";
 
 export const Cart = () => {
   const [cartPrice, setCartPrice] = useState(0);
-  const { cartItems, increaseItemQty, decreaseItemQty } = useCart();
+  const { cartItems, increaseItemQty, decreaseItemQty, removeItemFromCart } =
+    useCart();
 
   useEffect(() => {
     setCartPrice(() =>
@@ -23,6 +24,12 @@ export const Cart = () => {
           {cartItems.map((item) => {
             return (
               <div className="cart-card" key={item._id}>
+                <div
+                  className="cart-item-remove"
+                  onClick={() => removeItemFromCart(item._id)}
+                >
+                  &#x2716;
+                </div>
                 <div className="cart-card-img">
                   <img src={item.image} alt="cart image" />
                 </div>

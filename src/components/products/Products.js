@@ -1,15 +1,20 @@
 import "./products.css";
 import { Rating } from "../index";
 import { useProduct, useLogin, useCart } from "../../context/index";
+import { useNavigate } from "react-router-dom";
 
 export const Products = () => {
   const { initialProductList, productState } = useProduct();
   const { userData } = useLogin();
-  const { addToCart } = useCart();
+  const { cartItems, addToCart } = useCart();
+  const navigate = useNavigate();
+  console.log(cartItems);
 
   const addToCartHandler = (product) => {
     if (userData.isLoggedIn) {
       addToCart(product);
+    } else {
+      navigate("/login");
     }
   };
 
@@ -59,12 +64,21 @@ export const Products = () => {
             </div>
             <div className="product-card-quantity">{item.weight}</div>
             <Rating productRating={item.ratings} />
-            <button
-              className="product-card-btn-add"
-              onClick={() => addToCartHandler(item)}
-            >
-              Add to cart
-            </button>
+            {cartItems.find((prod) => item._id === prod._id) ? (
+              <button
+                className="product-card-btn-add"
+                onClick={() => navigate("/cart")}
+              >
+                Go to Cart
+              </button>
+            ) : (
+              <button
+                className="product-card-btn-add"
+                onClick={() => addToCartHandler(item)}
+              >
+                Add to cart
+              </button>
+            )}
           </div>
         </div>
       ))}
