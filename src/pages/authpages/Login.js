@@ -10,6 +10,7 @@ export const Login = () => {
     email: null,
     password: null,
   });
+  const [isPasswdVisible, setIsPasswdVisible] = useState(false);
   const { userData, setUserData } = useLogin();
   const navigate = useNavigate();
   return (
@@ -32,15 +33,27 @@ export const Login = () => {
             setLoginFormData({ ...loginFormData, email: e.target.value })
           }
         />
-        <input
-          type="password"
-          name="passwd"
-          id=""
-          placeholder="Password"
-          onChange={(e) =>
-            setLoginFormData({ ...loginFormData, password: e.target.value })
-          }
-        />
+        <div className="paswword-field">
+          <input
+            type={isPasswdVisible ? "text" : "password"}
+            name="passwd"
+            id=""
+            placeholder="Password"
+            onChange={(e) =>
+              setLoginFormData({ ...loginFormData, password: e.target.value })
+            }
+          />
+          <span
+            className="passwd-visible"
+            onClick={() => setIsPasswdVisible(!isPasswdVisible)}
+          >
+            {isPasswdVisible ? (
+              <i className="far fa-eye"></i>
+            ) : (
+              <i className="far fa-eye-slash"></i>
+            )}
+          </span>
+        </div>
         <button className="login-btn" type="submit">
           Login
         </button>

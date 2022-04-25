@@ -64,3 +64,14 @@
   font-size: 0.8rem;
   color: var(--color-red);
 }
+
+.paswword-field {
+  position: relative;
+}
+
+.passwd-visible {
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 2.8rem;
+}

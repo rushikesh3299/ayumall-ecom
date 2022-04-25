@@ -13,6 +13,10 @@ export const Signup = () => {
     password: null,
     confirmPassword: null,
   });
+  const [isPasswdVisible, setIsPasswdVisible] = useState({
+    passwd: false,
+    cpasswd: false,
+  });
   const { userData, setUserData } = useLogin();
 
   const navigate = useNavigate();
@@ -52,27 +56,61 @@ export const Signup = () => {
             setSignupFormData({ ...signupFormData, email: e.target.value })
           }
         />
-        <input
-          type="password"
-          name="passwd"
-          id="password"
-          placeholder="Enter Password"
-          onChange={(e) =>
-            setSignupFormData({ ...signupFormData, password: e.target.value })
-          }
-        />
-        <input
-          type="password"
-          name="confirm-passwd"
-          id="confirmPassword"
-          placeholder="Confirm Password"
-          onChange={(e) =>
-            setSignupFormData({
-              ...signupFormData,
-              confirmPassword: e.target.value,
-            })
-          }
-        />
+        <div className="paswword-field">
+          <input
+            type={isPasswdVisible.passwd ? "text" : "password"}
+            name="passwd"
+            id="password"
+            placeholder="Enter Password"
+            onChange={(e) =>
+              setSignupFormData({ ...signupFormData, password: e.target.value })
+            }
+          />
+          <span
+            className="passwd-visible"
+            onClick={() =>
+              setIsPasswdVisible({
+                ...isPasswdVisible,
+                passwd: !isPasswdVisible.passwd,
+              })
+            }
+          >
+            {isPasswdVisible.passwd ? (
+              <i className="far fa-eye"></i>
+            ) : (
+              <i className="far fa-eye-slash"></i>
+            )}
+          </span>
+        </div>
+        <div className="paswword-field">
+          <input
+            type={isPasswdVisible.cpasswd ? "text" : "password"}
+            name="confirm-passwd"
+            id="confirmPassword"
+            placeholder="Confirm Password"
+            onChange={(e) =>
+              setSignupFormData({
+                ...signupFormData,
+                confirmPassword: e.target.value,
+              })
+            }
+          />
+          <span
+            className="passwd-visible"
+            onClick={() =>
+              setIsPasswdVisible({
+                ...isPasswdVisible,
+                cpasswd: !isPasswdVisible.cpasswd,
+              })
+            }
+          >
+            {isPasswdVisible.cpasswd ? (
+              <i className="far fa-eye"></i>
+            ) : (
+              <i className="far fa-eye-slash"></i>
+            )}
+          </span>
+        </div>
         {signupFormData.password != signupFormData.confirmPassword && (
           <p className="match-password">Passwords are not matching</p>
         )}
