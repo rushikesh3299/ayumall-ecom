@@ -20,7 +20,7 @@ export const loginHandler = (
         });
         localStorage.setItem("token", JSON.stringify(data.encodedToken));
       }
-      navigate("/");
+      navigate(-1);
     } catch (error) {
       console.error(error);
     }
