@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useCart } from "../../context/index";
+import { useCart, useWishlist } from "../../context/index";
 import "./cart.css";
 
 export const Cart = () => {
   const [cartPrice, setCartPrice] = useState(0);
   const { cartItems, increaseItemQty, decreaseItemQty, removeItemFromCart } =
     useCart();
-
+  const { addItemToWishlist } = useWishlist();
   useEffect(() => {
     setCartPrice(() =>
       cartItems.reduce((acc, curr) => {
@@ -52,7 +52,13 @@ export const Cart = () => {
                       -
                     </button>
                   </div>
-                  <button className="cart-card-wishlist-btn">
+                  <button
+                    className="cart-card-wishlist-btn"
+                    onClick={() => {
+                      addItemToWishlist(item);
+                      removeItemFromCart(item._id);
+                    }}
+                  >
                     Move to Wishlist
                   </button>
                 </div>
