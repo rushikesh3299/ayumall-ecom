@@ -12,7 +12,7 @@ export const Wishlist = () => {
       <div className="wishlist-section">
         {wishlistItems.map((item) => {
           return (
-            <div className="product-card wishlist-card">
+            <div className="product-card wishlist-card" key={item._id}>
               <div
                 className="cart-item-remove"
                 onClick={() => removeItemFromWishlist(item._id)}

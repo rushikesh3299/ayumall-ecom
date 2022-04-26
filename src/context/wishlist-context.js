@@ -57,13 +57,7 @@ const WishlistProvider = ({ children }) => {
   };
 
   const checkItemInWiishlist = (itemId) => {
-    let itemPresent = false;
-    wishlistItems.forEach((item) => {
-      if (item._id == itemId) {
-        itemPresent = true;
-      }
-    });
-    return itemPresent;
+    return wishlistItems.some((item) => item._id === itemId);
   };
 
   useEffect(() => {
