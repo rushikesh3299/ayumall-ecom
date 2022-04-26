@@ -1,4 +1,5 @@
 import "./App.css";
+import { Toaster } from "react-hot-toast";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Navbar, Footer } from "./components/index";
 import {
@@ -35,6 +36,7 @@ export const App = () => {
       {location.pathname != "/login" && location.pathname != "/signup" && (
         <Footer />
       )}
+      <Toaster />
     </div>
   );
 };

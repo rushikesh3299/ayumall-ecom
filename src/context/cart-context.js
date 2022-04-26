@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import toast from "react-hot-toast";
 import { useLogin } from "../context/index";
 import axios from "axios";
 const CartContext = createContext();
@@ -43,6 +44,10 @@ const CartProvider = ({ children }) => {
         }
       );
       setCartItems(data.cart);
+      toast.success("Item added to cart", {
+        duration: 2000,
+        position: "top-right",
+      });
     } catch (error) {
       console.error(error);
     }

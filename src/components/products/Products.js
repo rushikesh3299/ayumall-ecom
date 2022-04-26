@@ -1,5 +1,6 @@
 import "./products.css";
 import { Rating } from "../index";
+import toast from "react-hot-toast";
 import {
   useProduct,
   useLogin,
@@ -19,6 +20,10 @@ export const Products = () => {
     if (userData.isLoggedIn) {
       addToCart(product);
     } else {
+      toast("Please login first", {
+        duration: 2000,
+        position: "top-right",
+      });
       navigate("/login");
     }
   };

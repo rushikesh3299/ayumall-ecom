@@ -1,4 +1,5 @@
 import "./navbar.css";
+import toast from "react-hot-toast";
 import { useProduct, useLogin } from "../../context/index";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -59,14 +60,14 @@ export const Navbar = () => {
           )}
           <Link
             className="nav-icon-link"
-            to={userData.isLoggedIn ? "/wishlist" : "/"}
+            to={userData.isLoggedIn ? "/wishlist" : "/login"}
           >
             <i className="fas fa-heart"></i>
             <span className="nav-icon-name">WishList</span>
           </Link>
           <Link
             className="nav-icon-link"
-            to={userData.isLoggedIn ? "/cart" : "/"}
+            to={userData.isLoggedIn ? "/cart" : "/login"}
           >
             <i className="fas fa-shopping-cart"></i>
             <span className="nav-icon-name">Cart</span>

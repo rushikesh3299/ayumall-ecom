@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const loginHandler = (
   loginFormData,
@@ -19,10 +20,18 @@ export const loginHandler = (
           userToken: data.encodedToken,
         });
         localStorage.setItem("token", JSON.stringify(data.encodedToken));
+        toast.success("Welcome! Logged In successfully", {
+          duration: 2000,
+          position: "top-right",
+        });
       }
       navigate(-1);
     } catch (error) {
       console.error(error);
+      toast.error("Please check credentials", {
+        duration: 2000,
+        position: "top-right",
+      });
     }
   })();
 };
