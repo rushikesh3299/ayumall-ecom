@@ -1,14 +1,19 @@
 import "./products.css";
 import { Rating } from "../index";
-import { useProduct, useLogin, useCart } from "../../context/index";
+import {
+  useProduct,
+  useLogin,
+  useCart,
+  useWishlist,
+} from "../../context/index";
 import { useNavigate } from "react-router-dom";
 
 export const Products = () => {
   const { initialProductList, productState } = useProduct();
   const { userData } = useLogin();
   const { cartItems, addToCart } = useCart();
+  const { addItemToWishlist } = useWishlist();
   const navigate = useNavigate();
-  console.log(cartItems);
 
   const addToCartHandler = (product) => {
     if (userData.isLoggedIn) {
@@ -53,7 +58,10 @@ export const Products = () => {
         <div className="product-card" key={item._id}>
           <div className="product-card-img">
             <img src={item.image} alt="" />
-            <i className="far fa-heart"></i>
+            <i
+              className="far fa-heart"
+              onClick={() => addItemToWishlist(item)}
+            ></i>
           </div>
           <div className="product-card-discription">
             <div className="product-card-name">{item.title}</div>

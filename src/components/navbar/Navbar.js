@@ -57,7 +57,10 @@ export const Navbar = () => {
               <span className="nav-icon-name">Login</span>
             </Link>
           )}
-          <Link className="nav-icon-link" to="/">
+          <Link
+            className="nav-icon-link"
+            to={userData.isLoggedIn ? "/wishlist" : "/"}
+          >
             <i className="fas fa-heart"></i>
             <span className="nav-icon-name">WishList</span>
           </Link>
