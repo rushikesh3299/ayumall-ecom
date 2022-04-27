@@ -45,12 +45,12 @@
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
+  border: 1px solid var(--primary-color);
 }
 
 .banner-shop-btn:hover {
   background: transparent;
   color: var(--primary-color);
-  border: 1px solid var(--primary-color);
 }
 
 @media only screen and (max-width: 550px) {

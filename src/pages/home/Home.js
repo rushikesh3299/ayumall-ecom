@@ -13,7 +13,7 @@ export const Home = () => {
           <p className="banner-slogan">India's Traditional Pharmacist</p>
         </div>
         <p className="banner-discount">
-          Upto <span>25% Off</span> on all products
+          Upto <span>10% Off</span> on all products
         </p>
         <NavLink className="banner-shop-btn" to="/products">
           Shop Now
