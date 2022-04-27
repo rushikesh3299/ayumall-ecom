@@ -1,7 +1,12 @@
 .cart-mgmt-title {
   font-size: 1.5rem;
   text-align: center;
-  margin-bottom: 2rem;
+  margin: 1rem 0;
+}
+
+.cart-mgmt-empty {
+  height: 50vh;
+  text-align: center;
 }
 
 .cart-mgmt-section {
