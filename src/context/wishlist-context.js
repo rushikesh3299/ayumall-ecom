@@ -14,9 +14,10 @@ const WishlistProvider = ({ children }) => {
 
   const getWishlistItems = async () => {
     try {
+      const authToken = localStorage.getItem("token");
       const { data } = await axios.get("/api/user/wishlist", {
         headers: {
-          authorization: userData.userToken,
+          authorization: authToken,
         },
       });
       setWishlistItems(data.wishlist);
@@ -29,12 +30,13 @@ const WishlistProvider = ({ children }) => {
     if (userData.isLoggedIn) {
       if (!checkItemInWiishlist(product._id)) {
         try {
+          const authToken = localStorage.getItem("token");
           const { data } = await axios.post(
             "/api/user/wishlist",
             { product },
             {
               headers: {
-                authorization: userData.userToken,
+                authorization: authToken,
               },
             }
           );
@@ -58,9 +60,10 @@ const WishlistProvider = ({ children }) => {
 
   const removeItemFromWishlist = async (itemId) => {
     try {
+      const authToken = localStorage.getItem("token");
       const { data } = await axios.delete("api/user/wishlist/" + itemId, {
         headers: {
-          authorization: userData.userToken,
+          authorization: authToken,
         },
       });
       setWishlistItems(() =>

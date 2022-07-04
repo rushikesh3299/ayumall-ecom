@@ -11,7 +11,7 @@ export const Login = () => {
     password: null,
   });
   const [isPasswdVisible, setIsPasswdVisible] = useState(false);
-  const { userData, setUserData } = useLogin();
+  const { loginService } = useLogin();
   const navigate = useNavigate();
   return (
     <div className="login-container">
@@ -22,7 +22,7 @@ export const Login = () => {
         className="login-inputs"
         onSubmit={(e) => {
           e.preventDefault();
-          loginHandler(loginFormData, userData, setUserData, navigate);
+          loginService(loginFormData);
         }}
       >
         <input

@@ -11,9 +11,10 @@ const CartProvider = ({ children }) => {
 
   const getCartItems = async () => {
     try {
+      const authToken = localStorage.getItem("token");
       const { data } = await axios.get("/api/user/cart", {
         headers: {
-          authorization: userData.userToken,
+          authorization: authToken,
         },
       });
       setCartItems(data.cart);
@@ -34,12 +35,13 @@ const CartProvider = ({ children }) => {
 
   const addNewItemToCart = async (product) => {
     try {
+      const authToken = localStorage.getItem("token");
       const { data } = await axios.post(
         "/api/user/cart",
         { product },
         {
           headers: {
-            authorization: userData.userToken,
+            authorization: authToken,
           },
         }
       );
@@ -55,12 +57,13 @@ const CartProvider = ({ children }) => {
 
   const increaseItemQty = async (itemId) => {
     try {
+      const authToken = localStorage.getItem("token");
       const { data } = await axios.post(
         "/api/user/cart/" + itemId,
         { action: { type: "increment" } },
         {
           headers: {
-            authorization: userData.userToken,
+            authorization: authToken,
           },
         }
       );
@@ -79,12 +82,13 @@ const CartProvider = ({ children }) => {
       removeItemFromCart(item._id);
     } else {
       try {
+        const authToken = localStorage.getItem("token");
         const { data } = await axios.post(
           "/api/user/cart/" + item._id,
           { action: { type: "decrement" } },
           {
             headers: {
-              authorization: userData.userToken,
+              authorization: authToken,
             },
           }
         );
@@ -103,9 +107,10 @@ const CartProvider = ({ children }) => {
 
   const removeItemFromCart = async (itemId) => {
     try {
+      const authToken = localStorage.getItem("token");
       const { data } = await axios.delete("api/user/cart/" + itemId, {
         headers: {
-          authorization: userData.userToken,
+          authorization: authToken,
         },
       });
       setCartItems(() => cartItems.filter((item) => item._id != itemId));
