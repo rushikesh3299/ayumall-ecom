@@ -12,9 +12,18 @@ import {
   Wishlist,
 } from "./pages/index";
 import Mockman from "mockman-js";
+import { useEffect } from "react";
 
 export const App = () => {
   const location = useLocation();
+  const pathName = location.pathname;
+
+  useEffect(
+    () =>
+      (document.title = `AyuMall | ${
+        pathName === "/" ? "home" : pathName.slice(1)
+      }`)
+  );
 
   return (
     <div className="App">

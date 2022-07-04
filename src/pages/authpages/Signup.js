@@ -17,7 +17,7 @@ export const Signup = () => {
     passwd: false,
     cpasswd: false,
   });
-  const { userData, setUserData } = useLogin();
+  const { signupService } = useLogin();
 
   const navigate = useNavigate();
   return (
@@ -29,7 +29,7 @@ export const Signup = () => {
         className="login-inputs"
         onSubmit={(e) => {
           e.preventDefault();
-          signupHandler(signupFormData, userData, setUserData, navigate);
+          signupService(signupFormData);
         }}
       >
         <input

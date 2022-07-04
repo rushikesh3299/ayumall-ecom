@@ -12,6 +12,10 @@ export const Navbar = () => {
   const logoutHandler = () => {
     setUserData({ ...userData, isLoggedIn: false, userToken: null });
     localStorage.removeItem("token");
+    toast.success("Logged Out successfully", {
+      duration: 2000,
+      position: "top-right",
+    });
   };
   return (
     <div>
