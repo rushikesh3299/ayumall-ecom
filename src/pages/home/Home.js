@@ -87,10 +87,38 @@ export const Home = () => {
         <div className="featured-title">Featured Brands</div>
         <div className="half-border"></div>
         <div className="features-brand-section">
-          <img src="images/dabar.png" alt="Dabur img..." />
-          <img src="images/dhootpapehswar.png" alt="Dhootpapeshwar img..." />
-          <img src="images/santulan.png" alt="Santulan img..." />
-          <img src="images/patanjali.png" alt="Patanjali img..." />
+          <img
+            src="images/dabar.png"
+            alt="Dabur img..."
+            onClick={() => {
+              productDispatch({ type: "BRANDWISE", payload: "Dabar" });
+              navigate("./products");
+            }}
+          />
+          <img
+            src="images/dhootpapehswar.png"
+            alt="Dhootpapeshwar img..."
+            onClick={() => {
+              productDispatch({ type: "BRANDWISE", payload: "Dhootpapeshwar" });
+              navigate("./products");
+            }}
+          />
+          <img
+            src="images/santulan.png"
+            alt="Santulan img..."
+            onClick={() => {
+              productDispatch({ type: "BRANDWISE", payload: "Santulan" });
+              navigate("./products");
+            }}
+          />
+          <img
+            src="images/patanjali.png"
+            alt="Patanjali img..."
+            onClick={() => {
+              productDispatch({ type: "BRANDWISE", payload: "Patanjali" });
+              navigate("./products");
+            }}
+          />
         </div>
       </div>
     </div>

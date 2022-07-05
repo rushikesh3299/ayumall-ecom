@@ -44,6 +44,10 @@ export const Products = () => {
     return [...productList].filter((item) => item.ratings >= showRating);
   };
 
+  const brandWiseProducts = (showBrand, productList) => {
+    return [...productList].filter((item) => item.brand === showBrand);
+  };
+
   const sortedProducts = productState.sortBy
     ? sortProducts(productState.sortBy, initialProductList)
     : [...initialProductList];
@@ -57,9 +61,13 @@ export const Products = () => {
       ? aboveRateProducts(productState.showRating, categorizedProducts)
       : [...categorizedProducts];
 
+  const brandWisedProducts = productState.showBrand
+    ? brandWiseProducts(productState.showBrand, aboveRatedProducts)
+    : [...aboveRateProducts];
+
   return (
     <div className="product-list-section">
-      {aboveRatedProducts.map((item) => (
+      {brandWisedProducts.map((item) => (
         <div className="product-card" key={item._id}>
           <div className="product-card-img">
             <img src={item.image} alt="" />
