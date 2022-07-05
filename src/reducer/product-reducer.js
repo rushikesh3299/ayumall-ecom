@@ -23,6 +23,9 @@ export const productReducer = () => {
               showCategory: [...productState.showCategory, action.payload],
             };
       }
+      case "BRANDWISE": {
+        return { ...productState, showBrand: action.payload };
+      }
       case "RATE": {
         return { ...productState, showRating: action.payload };
       }
@@ -31,6 +34,7 @@ export const productReducer = () => {
           ...productState,
           sortBy: null,
           showCategory: [],
+          showBrand: null,
           showRating: 0,
         };
       }
@@ -39,7 +43,12 @@ export const productReducer = () => {
     }
   };
 
-  const initialState = { sortBy: null, showCategory: [], showRating: 0 };
+  const initialState = {
+    sortBy: null,
+    showCategory: [],
+    showBrand: null,
+    showRating: 0,
+  };
   const [productState, productDispatch] = useReducer(
     filterHandler,
     initialState
