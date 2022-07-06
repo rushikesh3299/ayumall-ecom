@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useCart, useWishlist } from "../../context/index";
+import { Link } from "react-router-dom";
 import "./cart.css";
 
 export const Cart = () => {
@@ -23,6 +24,9 @@ export const Cart = () => {
       {cartItems.length === 0 ? (
         <div className="cart-mgmt-empty">
           <h1>Your Cart Is Empty</h1>
+          <Link to="/products" className="empty-addlink">
+            Add items to Cart
+          </Link>
         </div>
       ) : (
         <div className="cart-mgmt-section">

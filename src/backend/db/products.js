@@ -9,8 +9,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Swamal",
-    image:
-      "https://www.sdlindia.com/consumerayurved/images/products/dp335cc332e2379db300fd92839ca6687a_crop.jpg",
+    image: "https://m.media-amazon.com/images/I/81EUM5ANI7L._SX679_.jpg",
     brand: "Dhootpapeshwar",
     price: "500",
     weight: "1kg",
@@ -22,8 +21,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Aarogyavardhini",
-    image:
-      "https://sdlindia.com/media/catalog/product/cache/1/thumbnail/300x300/9df78eab33525d08d6e5fb8d27136e95/a/r/arogyavardhani_1.jpg",
+    image: "https://m.media-amazon.com/images/I/41K8xNjuHVL.jpg",
     brand: "Dhootpapeshwar",
     price: "350",
     weight: "500gm",
@@ -36,7 +34,7 @@ export const products = [
     _id: uuid(),
     title: "Triphala Churna",
     image:
-      "https://sdlindia.com/media/catalog/product/cache/1/image/220x220/9df78eab33525d08d6e5fb8d27136e95/t/r/triphala_choorna_1.jpg",
+      "https://images-eu.ssl-images-amazon.com/images/I/41sGBq-4aWL._SX300_SY300_QL70_FMwebp_.jpg",
     brand: "Dhootpapeshwar",
     price: "150",
     weight: "50gm",
@@ -49,7 +47,7 @@ export const products = [
     _id: uuid(),
     title: "SuvarnaKalpa",
     image:
-      "https://sdlindia.com/media/catalog/product/cache/1/thumbnail/300x300/9df78eab33525d08d6e5fb8d27136e95/b/r/bruhat_vata_chintamani_rasa.jpg",
+      "https://images-eu.ssl-images-amazon.com/images/I/51m2VwSZDoL._SX300_SY300_QL70_FMwebp_.jpg",
     brand: "Dhootpapeshwar",
     price: "90",
     weight: "30 items",
@@ -62,7 +60,7 @@ export const products = [
     _id: uuid(),
     title: "Anu Taila",
     image:
-      "https://sdlindia.com/media/catalog/product/cache/1/image/220x220/9df78eab33525d08d6e5fb8d27136e95/a/n/anu-taila_1.jpg",
+      "https://images-eu.ssl-images-amazon.com/images/I/41xxfI0YDpS._SX300_SY300_QL70_FMwebp_.jpg",
     brand: "Dhootpapeshwar",
     price: "110",
     weight: "30ml",
