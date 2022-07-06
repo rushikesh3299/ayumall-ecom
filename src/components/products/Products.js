@@ -63,7 +63,7 @@ export const Products = () => {
 
   const brandWisedProducts = productState.showBrand
     ? brandWiseProducts(productState.showBrand, aboveRatedProducts)
-    : [...aboveRateProducts];
+    : [...aboveRatedProducts];
 
   return (
     <div className="product-list-section">

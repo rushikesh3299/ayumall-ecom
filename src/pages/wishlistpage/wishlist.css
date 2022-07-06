@@ -26,6 +26,16 @@
   z-index: 1;
 }
 
+.empty-addlink {
+  color: var(--text-color-light);
+  border-bottom: 1px solid var(--text-color-light);
+}
+
+.empty-addlink:hover {
+  color: var(--text-color);
+  border-bottom: 1px solid var(--text-color);
+}
+
 @media only screen and (max-width: 450px) {
   .wishlist-section {
     gap: 1rem;

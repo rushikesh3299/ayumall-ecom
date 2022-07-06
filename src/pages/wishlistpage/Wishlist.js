@@ -1,5 +1,6 @@
 import "./wishlist.css";
 import { useWishlist, useCart } from "../../context/index";
+import { Link } from "react-router-dom";
 
 export const Wishlist = () => {
   const { wishlistItems, removeItemFromWishlist } = useWishlist();
@@ -9,6 +10,9 @@ export const Wishlist = () => {
       {wishlistItems.length === 0 ? (
         <div className="wishist-section-empty">
           <h1>Your wishlist is empty</h1>
+          <Link to="/products" className="empty-addlink">
+            Add items to WishList
+          </Link>
         </div>
       ) : (
         <div>
