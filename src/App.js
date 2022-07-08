@@ -1,7 +1,8 @@
 import "./App.css";
 import { Toaster } from "react-hot-toast";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { Navbar, Footer } from "./components/index";
+import { Navbar, Footer, RequireAuth } from "./components/index";
+import { useLogin } from "./context";
 import {
   Login,
   Signup,
@@ -17,6 +18,7 @@ import { useEffect } from "react";
 export const App = () => {
   const location = useLocation();
   const pathName = location.pathname;
+  const { userData } = useLogin();
 
   useEffect(
     () =>
@@ -36,8 +38,22 @@ export const App = () => {
         <Route path="/products" element={<ProductPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/wishlist" element={<Wishlist />} />
+        <Route
+          path="/cart"
+          element={
+            <RequireAuth login={userData.isLoggedIn}>
+              <Cart />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <RequireAuth login={userData.isLoggedIn}>
+              <Wishlist />
+            </RequireAuth>
+          }
+        />
         <Route path="/mockman" element={<Mockman />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
