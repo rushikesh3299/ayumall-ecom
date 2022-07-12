@@ -7,7 +7,7 @@ import {
   useCart,
   useWishlist,
 } from "../../context/index";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export const Products = () => {
   const { initialProductList, productState } = useProduct();
@@ -77,13 +77,15 @@ export const Products = () => {
             ></i>
           </div>
           <div className="product-card-discription">
-            <div className="product-card-name">{item.title}</div>
-            <div className="product-card-brand">{item.brand}</div>
-            <div className="product-card-price">
-              <div>{item.price}Rs</div>
-              <div>(15% OFF)</div>
-            </div>
-            <div className="product-card-quantity">{item.weight}</div>
+            <Link to={`/products/${item._id}`}>
+              <div className="product-card-name">{item.title}</div>
+              <div className="product-card-brand">{item.brand}</div>
+              <div className="product-card-price">
+                <div>{item.price}Rs</div>
+                <div>(15% OFF)</div>
+              </div>
+              <div className="product-card-quantity">{item.weight}</div>
+            </Link>
             <Rating productRating={item.ratings} />
             {cartItems.find((prod) => item._id === prod._id) ? (
               <button

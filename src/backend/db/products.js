@@ -83,7 +83,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "CHyavanprash",
+    title: "Chyavanprash",
     image:
       "https://www.santulan.in/wp-content/uploads/2020/04/chyavanprash2-1.png",
     brand: "Santulan",
@@ -199,7 +199,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Chyavanprash",
-    image: "https://images.meesho.com/images/products/82823464/lpt3b_512.jpg",
+    image: "https://m.media-amazon.com/images/I/71tWd6IgTsL._SY879_.jpg",
     brand: "Patanjali",
     price: "300",
     weight: "200gm",

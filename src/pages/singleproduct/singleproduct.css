@@ -1,0 +1,12 @@
+.single-product {
+  margin: 1rem;
+  /* display: flex; */
+}
+
+.single-product-img img {
+  width: 400px;
+}
+
+.single-product-info {
+  font-size: 2rem;
+}
