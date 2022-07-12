@@ -11,6 +11,7 @@ import {
   ErrorPage,
   Cart,
   Wishlist,
+  SingleProduct,
 } from "./pages/index";
 import Mockman from "mockman-js";
 import { useEffect } from "react";
@@ -36,6 +37,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductPage />} />
+        <Route path="/products/:productId" element={<SingleProduct />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route
