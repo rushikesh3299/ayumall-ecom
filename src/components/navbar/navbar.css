@@ -55,6 +55,23 @@
   right: 1rem;
 }
 
+.navbar-search-results {
+  background-color: var(--pure-white-color);
+  position: absolute;
+  width: 100%;
+  top: 0.75rem;
+  z-index: -1;
+  padding-top: 1.5rem;
+}
+
+.navbar-search-results div {
+  padding: 0.25rem 0.5rem;
+}
+
+.navbar-search-results div:hover {
+  background-color: var(--light-gray-bg);
+}
+
 .navbar-search {
   width: 16rem;
   padding: 0.25rem;

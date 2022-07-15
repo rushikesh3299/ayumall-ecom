@@ -2,12 +2,15 @@ import "./navbar.css";
 import toast from "react-hot-toast";
 import { useProduct, useLogin } from "../../context/index";
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 export const Navbar = () => {
   const location = useLocation();
   const [dispMobNav, setDispMobNav] = useState(false);
-  const { setShowFilterMobileNav } = useProduct();
+  const [searchInp, setSearchInp] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+  const { initialProductList, setShowFilterMobileNav } = useProduct();
   const { userData, setUserData } = useLogin();
+  const navigate = useNavigate();
 
   const logoutHandler = () => {
     setUserData({ ...userData, isLoggedIn: false, userToken: null });
@@ -17,6 +20,25 @@ export const Navbar = () => {
       position: "top-right",
     });
   };
+
+  const searchItems = (searchKw) => {
+    setSearchInp(() => searchKw);
+    const searchKwL = searchKw.toLowerCase();
+    const foundItems = initialProductList.filter(
+      (item) =>
+        item.title.toLowerCase().includes(searchKwL) ||
+        item.brand.toLowerCase().includes(searchKwL)
+    );
+    if (searchKw === "") setSearchResult(() => []);
+    else setSearchResult(() => foundItems);
+  };
+
+  const goToSearchedProduct = (productId) => {
+    setSearchInp(() => "");
+    setSearchResult(() => []);
+    navigate(`/products/${productId}`);
+  };
+
   return (
     <div>
       <div className="navbar">
@@ -46,7 +68,19 @@ export const Navbar = () => {
               type="text"
               className="navbar-search"
               placeholder="Search here"
+              value={searchInp}
+              onChange={(e) => searchItems(e.target.value)}
             />
+            <div className="navbar-search-results">
+              {searchResult.map((item) => (
+                <div
+                  key={item._id}
+                  onClick={() => goToSearchedProduct(item._id)}
+                >
+                  {item.title}
+                </div>
+              ))}
+            </div>
           </div>
           {userData.isLoggedIn ? (
             <div
