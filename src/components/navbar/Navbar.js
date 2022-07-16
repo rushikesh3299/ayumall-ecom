@@ -162,6 +162,23 @@ export const Navbar = () => {
           )}
         </div>
       </div>
+      <div className="mob-navbar-search-container">
+        <i className="fas fa-search"></i>
+        <input
+          type="text"
+          className="mob-navbar-search"
+          placeholder="Search here"
+          value={searchInp}
+          onChange={(e) => searchItems(e.target.value)}
+        />
+        <div className="mob-navbar-search-results">
+          {searchResult.map((item) => (
+            <div key={item._id} onClick={() => goToSearchedProduct(item._id)}>
+              {item.title}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
