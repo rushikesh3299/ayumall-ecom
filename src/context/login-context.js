@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 import { loginHandler } from "../services/login-handler";
 import { signupHandler } from "../services/signup-handler";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const LoginContext = createContext();
 const useLogin = () => useContext(LoginContext);
@@ -14,7 +15,11 @@ const LoginProvider = ({ children }) => {
     isLoggedIn: isTokenSet,
     userToken: getToken,
   });
-  const [userName, setUserName] = useState({ firstName: "", lastName: "" });
+  const [userName, setUserName] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
   const navigate = useNavigate();
 
   const loginService = async ({ email, password }) => {
@@ -30,6 +35,7 @@ const LoginProvider = ({ children }) => {
         ...userName,
         firstName: data.foundUser.firstName,
         lastName: data.foundUser.lastName,
+        email: data.foundUser.email,
       });
       navigate(-1);
     }
@@ -53,9 +59,18 @@ const LoginProvider = ({ children }) => {
     }
   };
 
+  const logoutHandler = () => {
+    setUserData({ ...userData, isLoggedIn: false, userToken: null });
+    localStorage.removeItem("token");
+    toast.success("Logged Out successfully", {
+      duration: 2000,
+      position: "top-right",
+    });
+  };
+
   return (
     <LoginContext.Provider
-      value={{ userData, loginService, signupService, setUserData }}
+      value={{ userData, loginService, signupService, logoutHandler, userName }}
     >
       {children}
     </LoginContext.Provider>
