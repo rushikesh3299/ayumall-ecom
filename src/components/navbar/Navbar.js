@@ -1,25 +1,16 @@
 import "./navbar.css";
-import toast from "react-hot-toast";
 import { useProduct, useLogin } from "../../context/index";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
 export const Navbar = () => {
   const location = useLocation();
   const [dispMobNav, setDispMobNav] = useState(false);
   const [searchInp, setSearchInp] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const { initialProductList, setShowFilterMobileNav } = useProduct();
-  const { userData, setUserData } = useLogin();
+  const { userData, logoutHandler, userName } = useLogin();
   const navigate = useNavigate();
-
-  const logoutHandler = () => {
-    setUserData({ ...userData, isLoggedIn: false, userToken: null });
-    localStorage.removeItem("token");
-    toast.success("Logged Out successfully", {
-      duration: 2000,
-      position: "top-right",
-    });
-  };
 
   const searchItems = (searchKw) => {
     setSearchInp(() => searchKw);
@@ -83,13 +74,13 @@ export const Navbar = () => {
             </div>
           </div>
           {userData.isLoggedIn ? (
-            <div
+            <Link
+              to="/userprofile"
               className="nav-icon-link nav-icon-link-login"
-              onClick={() => logoutHandler(userData, setUserData)}
             >
               <i className="fas fa-user-circle"></i>
-              <span className="nav-icon-name">LogOut</span>
-            </div>
+              <span className="nav-icon-name">{userName.firstName}</span>
+            </Link>
           ) : (
             <Link className="nav-icon-link nav-icon-link-login" to="/login">
               <i className="fas fa-user-circle"></i>
@@ -130,9 +121,7 @@ export const Navbar = () => {
         <div className="mobile-nav-menu-container">
           <div className="mobile-nav-menu">
             {userData.isLoggedIn ? (
-              <div onClick={() => logoutHandler(userData, setUserData)}>
-                Logout
-              </div>
+              <div onClick={() => logoutHandler()}>Logout</div>
             ) : (
               <Link to="/login">Login</Link>
             )}
