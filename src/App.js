@@ -12,6 +12,7 @@ import {
   Cart,
   Wishlist,
   SingleProduct,
+  ProfilePage,
 } from "./pages/index";
 import Mockman from "mockman-js";
 import { useEffect } from "react";
@@ -40,6 +41,14 @@ export const App = () => {
         <Route path="/products/:productId" element={<SingleProduct />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/userprofile"
+          element={
+            <RequireAuth login={userData.isLoggedIn}>
+              <ProfilePage />
+            </RequireAuth>
+          }
+        />
         <Route
           path="/cart"
           element={

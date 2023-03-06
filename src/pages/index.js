@@ -6,3 +6,4 @@ export { ErrorPage } from "./errorpage/ErrorPage";
 export { Cart } from "./cart/Cart";
 export { Wishlist } from "./wishlistpage/Wishlist";
 export { SingleProduct } from "./singleproduct/SingleProduct";
+export { ProfilePage } from "./userprofile/ProfilePage";

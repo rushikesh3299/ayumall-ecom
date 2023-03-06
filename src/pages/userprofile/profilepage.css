@@ -1,0 +1,35 @@
+.profile-title {
+  margin: 1rem;
+  text-align: center;
+}
+
+.profile-container {
+  width: 70%;
+  margin: 1rem auto;
+}
+
+.logout-btn-container {
+  text-align: right;
+}
+
+.logout-btn {
+  margin-left: auto;
+  color: var(--text-color-white);
+  background-color: var(--primary-color);
+  outline: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  color: var(--primary-color);
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+}
+
+.profile-details {
+  display: flex;
+}

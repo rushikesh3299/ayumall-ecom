@@ -1,8 +1,7 @@
 import React from "react";
 import "./login.css";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { loginHandler } from "../../services/login-handler";
 import { useLogin } from "../../context/index";
 
 export const Login = () => {
@@ -12,7 +11,6 @@ export const Login = () => {
   });
   const [isPasswdVisible, setIsPasswdVisible] = useState(false);
   const { loginService } = useLogin();
-  const navigate = useNavigate();
   return (
     <div className="login-container">
       <img className="login-img" src="images/AyuMall.png" alt="Ayumall logo" />
