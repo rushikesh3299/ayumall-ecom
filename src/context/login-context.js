@@ -31,11 +31,12 @@ const LoginProvider = ({ children }) => {
         isLoggedIn: true,
         userToken: data.encodedToken,
       });
+      console.log("login data", data);
       setUserName({
         ...userName,
-        firstName: data.foundUser.firstName,
-        lastName: data.foundUser.lastName,
-        email: data.foundUser.email,
+        firstName: data.data.firstname,
+        lastName: data.data.lastname,
+        email: data.data.email,
       });
       navigate(-1);
     }
@@ -48,12 +49,19 @@ const LoginProvider = ({ children }) => {
       email,
       password
     );
+    console.log("signup data", data);
     if (status === 201) {
       localStorage.setItem("token", data.encodedToken);
       setUserData({
         ...userData,
         isLoggedIn: true,
         userToken: data.encodedToken,
+      });
+      setUserName({
+        ...userName,
+        firstName: data.data.firstname,
+        lastName: data.data.lastname,
+        email: data.data.email,
       });
       navigate("/");
     }

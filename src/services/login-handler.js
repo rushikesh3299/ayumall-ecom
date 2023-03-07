@@ -3,10 +3,13 @@ import toast from "react-hot-toast";
 
 export const loginHandler = async (email, password) => {
   try {
-    const { data, status } = await axios.post("/api/auth/login", {
-      email: email,
-      password: password,
-    });
+    const { data, status } = await axios.post(
+      "https://ayumallecomstore.rushikesh3299.repl.co/auth/login",
+      {
+        email: email,
+        password: password,
+      }
+    );
     toast.success("Welcome! Logged In successfully", {
       duration: 2000,
       position: "top-right",

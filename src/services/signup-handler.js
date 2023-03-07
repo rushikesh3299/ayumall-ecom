@@ -3,12 +3,15 @@ import toast from "react-hot-toast";
 
 export const signupHandler = async (firstName, lastName, email, password) => {
   try {
-    const { data, status } = await axios.post("/api/auth/signup", {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
-    });
+    const { data, status } = await axios.post(
+      "https://ayumallecomstore.rushikesh3299.repl.co/auth/signup",
+      {
+        firstname: firstName,
+        lastname: lastName,
+        email: email,
+        password: password,
+      }
+    );
     localStorage.setItem("token", JSON.stringify(data.encodedToken));
     toast.success("Welcome! Logged In successfully", {
       duration: 2000,
