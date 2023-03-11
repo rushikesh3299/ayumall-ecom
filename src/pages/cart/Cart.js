@@ -6,13 +6,13 @@ import "./cart.css";
 
 export const Cart = () => {
   const [cartPrice, setCartPrice] = useState(0);
-  const { cartItems, increaseItemQty, decreaseItemQty, removeItemFromCart } =
+  const { cartItems, addToCart, decreaseItemQty, removeItemFromCart } =
     useCart();
   const { addItemToWishlist } = useWishlist();
   useEffect(() => {
     setCartPrice(() =>
       cartItems.reduce((acc, curr) => {
-        return parseInt(acc) + parseInt(curr.price) * curr.qty;
+        return parseInt(acc) + parseInt(curr.product.price) * curr.quantity;
       }, 0)
     );
   }, [cartItems]);
@@ -32,6 +32,7 @@ export const Cart = () => {
         <div className="cart-mgmt-section">
           <div className="cart-mgmt-col1">
             {cartItems.map((item) => {
+              console.log(item);
               return (
                 <div className="cart-card" key={item._id}>
                   <div
@@ -41,20 +42,22 @@ export const Cart = () => {
                     &#x2716;
                   </div>
                   <div className="cart-card-img">
-                    <img src={item.image} alt="cart image" />
+                    <img src={item.product.image} alt="cart image" />
                   </div>
                   <div className="cart-card-info">
-                    <div className="cart-card-title">{item.title}</div>
-                    <div className="cart-card-brand">{item.brand}</div>
-                    <div className="cart-card-price">{item.price} ₹</div>
+                    <div className="cart-card-title">{item.product.title}</div>
+                    <div className="cart-card-brand">{item.product.brand}</div>
+                    <div className="cart-card-price">
+                      {item.product.price} ₹
+                    </div>
                     <div className="cart-card-qty">
                       <button
                         className="cart-card-btn"
-                        onClick={() => increaseItemQty(item._id)}
+                        onClick={() => addToCart(item.product._id)}
                       >
                         +
                       </button>
-                      <span>{item.qty}</span>
+                      <span>{item.quantity}</span>
                       <button
                         className="cart-card-btn"
                         onClick={() => decreaseItemQty(item)}
@@ -65,8 +68,8 @@ export const Cart = () => {
                     <button
                       className="cart-card-wishlist-btn"
                       onClick={() => {
-                        addItemToWishlist(item);
-                        removeItemFromCart(item._id);
+                        addItemToWishlist(item.product);
+                        removeItemFromCart(item.product._id);
                       }}
                     >
                       Move to Wishlist

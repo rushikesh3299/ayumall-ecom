@@ -12,36 +12,36 @@ const CartProvider = ({ children }) => {
   const getCartItems = async () => {
     try {
       const authToken = localStorage.getItem("token");
-      const { data } = await axios.get("/api/user/cart", {
-        headers: {
-          authorization: authToken,
-        },
-      });
+      const { data } = await axios.get(
+        "https://ayumallecomstore.rushikesh3299.repl.co/cart",
+        {
+          headers: {
+            encodedtoken: authToken,
+          },
+        }
+      );
       setCartItems(data.cart);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const addToCart = (product) => {
-    const checkItemAlreadyPresent = checkItemInCart(product._id);
+  const addToCart = async (product) => {
+    // const checkItemAlreadyPresent = checkItemInCart(product._id);
 
-    if (checkItemAlreadyPresent) {
-      increaseItemQty(product._id);
-    } else {
-      addNewItemToCart(product);
-    }
-  };
-
-  const addNewItemToCart = async (product) => {
+    // if (checkItemAlreadyPresent) {
+    //   increaseItemQty(product._id);
+    // } else {
+    //   addNewItemToCart(product);
+    // }
     try {
       const authToken = localStorage.getItem("token");
       const { data } = await axios.post(
-        "/api/user/cart",
+        "https://ayumallecomstore.rushikesh3299.repl.co/cart",
         { product },
         {
           headers: {
-            authorization: authToken,
+            encodedtoken: authToken,
           },
         }
       );
@@ -55,27 +55,49 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  const increaseItemQty = async (itemId) => {
-    try {
-      const authToken = localStorage.getItem("token");
-      const { data } = await axios.post(
-        "/api/user/cart/" + itemId,
-        { action: { type: "increment" } },
-        {
-          headers: {
-            authorization: authToken,
-          },
-        }
-      );
-      setCartItems(() =>
-        cartItems.map((item) =>
-          item._id == itemId ? { ...item, qty: item.qty + 1 } : item
-        )
-      );
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const addNewItemToCart = async (product) => {
+  //   try {
+  //     const authToken = localStorage.getItem("token");
+  //     const { data } = await axios.post(
+  //       "/api/user/cart",
+  //       { product },
+  //       {
+  //         headers: {
+  //           authorization: authToken,
+  //         },
+  //       }
+  //     );
+  //     setCartItems(data.cart);
+  //     toast.success("Item added to cart", {
+  //       duration: 2000,
+  //       position: "top-right",
+  //     });
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // const increaseItemQty = async (itemId) => {
+  //   try {
+  //     const authToken = localStorage.getItem("token");
+  //     const { data } = await axios.post(
+  //       "/api/user/cart/" + itemId,
+  //       { action: { type: "increment" } },
+  //       {
+  //         headers: {
+  //           authorization: authToken,
+  //         },
+  //       }
+  //     );
+  //     setCartItems(() =>
+  //       cartItems.map((item) =>
+  //         item._id == itemId ? { ...item, qty: item.qty + 1 } : item
+  //       )
+  //     );
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const decreaseItemQty = async (item) => {
     if (item.qty <= 1) {
@@ -119,19 +141,20 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  const checkItemInCart = (itemId) => {
-    let itemPresent = false;
-    cartItems.forEach((item) => {
-      if (item._id == itemId) {
-        itemPresent = true;
-      }
-    });
-    return itemPresent;
-  };
+  // const checkItemInCart = (itemId) => {
+  //   let itemPresent = false;
+  //   cartItems.forEach((item) => {
+  //     if (item._id == itemId) {
+  //       itemPresent = true;
+  //     }
+  //   });
+  //   return itemPresent;
+  // };
 
   useEffect(() => {
     if (userData.isLoggedIn) {
       getCartItems(userData);
+      console.log("run");
     } else {
       setCartItems([]);
     }
@@ -142,7 +165,7 @@ const CartProvider = ({ children }) => {
       value={{
         cartItems,
         addToCart,
-        increaseItemQty,
+        // increaseItemQty,
         decreaseItemQty,
         removeItemFromCart,
       }}

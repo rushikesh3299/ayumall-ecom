@@ -23,29 +23,38 @@ export const Wishlist = () => {
           <div className="wishlist-section">
             {wishlistItems.map((item) => {
               return (
-                <div className="product-card wishlist-card" key={item._id}>
+                <div
+                  className="product-card wishlist-card"
+                  key={item.product._id}
+                >
                   <div
                     className="cart-item-remove"
-                    onClick={() => removeItemFromWishlist(item._id)}
+                    onClick={() => removeItemFromWishlist(item.product._id)}
                   >
                     &#x2716;
                   </div>
                   <div className="product-card-img">
-                    <img src={item.image} alt="" />
+                    <img src={item.product.image} alt="" />
                   </div>
                   <div className="product-card-discription">
-                    <div className="product-card-name">{item.title}</div>
-                    <div className="product-card-brand">{item.brand}</div>
+                    <div className="product-card-name">
+                      {item.product.title}
+                    </div>
+                    <div className="product-card-brand">
+                      {item.product.brand}
+                    </div>
                     <div className="product-card-price">
-                      <div>{item.price}</div>
+                      <div>{item.product.price}</div>
                       <div>(10% OFF)</div>
                     </div>
-                    <div className="product-card-quantity">{item.weight}</div>
+                    <div className="product-card-quantity">
+                      {item.product.weight}
+                    </div>
                     <button
                       className="product-card-btn-add"
                       onClick={() => {
-                        removeItemFromWishlist(item._id);
-                        addToCart(item);
+                        removeItemFromWishlist(item.product._id);
+                        addToCart(item.product);
                       }}
                     >
                       Move to cart

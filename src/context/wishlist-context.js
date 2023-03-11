@@ -15,11 +15,14 @@ const WishlistProvider = ({ children }) => {
   const getWishlistItems = async () => {
     try {
       const authToken = localStorage.getItem("token");
-      const { data } = await axios.get("/api/user/wishlist", {
-        headers: {
-          authorization: authToken,
-        },
-      });
+      const { data } = await axios.get(
+        "https://ayumallecomstore.rushikesh3299.repl.co/wishlist",
+        {
+          headers: {
+            encodedtoken: authToken,
+          },
+        }
+      );
       setWishlistItems(data.wishlist);
     } catch (error) {
       console.error(error);
@@ -32,11 +35,11 @@ const WishlistProvider = ({ children }) => {
         try {
           const authToken = localStorage.getItem("token");
           const { data } = await axios.post(
-            "/api/user/wishlist",
+            "https://ayumallecomstore.rushikesh3299.repl.co/wishlist",
             { product },
             {
               headers: {
-                authorization: authToken,
+                encodedtoken: authToken,
               },
             }
           );
@@ -59,13 +62,17 @@ const WishlistProvider = ({ children }) => {
   };
 
   const removeItemFromWishlist = async (itemId) => {
+    console.log(itemId);
     try {
       const authToken = localStorage.getItem("token");
-      const { data } = await axios.delete("api/user/wishlist/" + itemId, {
-        headers: {
-          authorization: authToken,
-        },
-      });
+      const { data } = await axios.delete(
+        "https://ayumallecomstore.rushikesh3299.repl.co/wishlist/" + itemId,
+        {
+          headers: {
+            encodedtoken: authToken,
+          },
+        }
+      );
       setWishlistItems(() =>
         wishlistItems.filter((item) => item._id != itemId)
       );
