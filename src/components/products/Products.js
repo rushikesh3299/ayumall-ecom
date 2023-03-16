@@ -13,6 +13,7 @@ export const Products = () => {
   const { initialProductList, productState } = useProduct();
   const { userData } = useLogin();
   const { cartItems, addToCart } = useCart();
+  console.log("cartitem from prodpage", cartItems);
   const { addItemToWishlist } = useWishlist();
   const navigate = useNavigate();
 
@@ -87,7 +88,7 @@ export const Products = () => {
               <div className="product-card-quantity">{item.weight}</div>
             </Link>
             <Rating productRating={item.ratings} />
-            {cartItems.find((prod) => item._id === prod._id) ? (
+            {cartItems.find((prod) => item._id === prod.product._id) ? (
               <button
                 className="product-card-btn-add"
                 onClick={() => navigate("/cart")}

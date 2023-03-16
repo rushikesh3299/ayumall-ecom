@@ -26,12 +26,12 @@ const LoginProvider = ({ children }) => {
     const { data, status } = await loginHandler(email, password);
     if (status === 200) {
       localStorage.setItem("token", data.encodedToken);
+      localStorage.setItem("userDetails", JSON.stringify(data.data));
       setUserData({
         ...userData,
         isLoggedIn: true,
         userToken: data.encodedToken,
       });
-      console.log("login data", data);
       setUserName({
         ...userName,
         firstName: data.data.firstname,
@@ -49,7 +49,6 @@ const LoginProvider = ({ children }) => {
       email,
       password
     );
-    console.log("signup data", data);
     if (status === 201) {
       localStorage.setItem("token", data.encodedToken);
       setUserData({
@@ -70,6 +69,7 @@ const LoginProvider = ({ children }) => {
   const logoutHandler = () => {
     setUserData({ ...userData, isLoggedIn: false, userToken: null });
     localStorage.removeItem("token");
+    localStorage.removeItem("userDetails");
     toast.success("Logged Out successfully", {
       duration: 2000,
       position: "top-right",

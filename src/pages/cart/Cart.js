@@ -20,7 +20,6 @@ export const Cart = () => {
   return (
     <div className="cart-mgmt-container">
       <div className="cart-mgmt-title">My Cart</div>
-
       {cartItems.length === 0 ? (
         <div className="cart-mgmt-empty">
           <h1>Your Cart Is Empty</h1>
@@ -32,12 +31,11 @@ export const Cart = () => {
         <div className="cart-mgmt-section">
           <div className="cart-mgmt-col1">
             {cartItems.map((item) => {
-              console.log(item);
               return (
-                <div className="cart-card" key={item._id}>
+                <div className="cart-card" key={item.product._id}>
                   <div
                     className="cart-item-remove"
-                    onClick={() => removeItemFromCart(item._id)}
+                    onClick={() => removeItemFromCart(item.product._id)}
                   >
                     &#x2716;
                   </div>

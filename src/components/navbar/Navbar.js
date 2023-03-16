@@ -9,7 +9,8 @@ export const Navbar = () => {
   const [searchInp, setSearchInp] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const { initialProductList, setShowFilterMobileNav } = useProduct();
-  const { userData, logoutHandler, userName } = useLogin();
+  const { userData, logoutHandler } = useLogin();
+  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
   const navigate = useNavigate();
 
   const searchItems = (searchKw) => {
@@ -79,7 +80,7 @@ export const Navbar = () => {
               className="nav-icon-link nav-icon-link-login"
             >
               <i className="fas fa-user-circle"></i>
-              <span className="nav-icon-name">{userName.firstName}</span>
+              <span className="nav-icon-name">{userDetails.firstname}</span>
             </Link>
           ) : (
             <Link className="nav-icon-link nav-icon-link-login" to="/login">

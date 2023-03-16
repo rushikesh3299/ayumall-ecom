@@ -31,27 +31,26 @@ const WishlistProvider = ({ children }) => {
 
   const addItemToWishlist = async (product) => {
     if (userData.isLoggedIn) {
-      if (!checkItemInWiishlist(product._id)) {
-        try {
-          const authToken = localStorage.getItem("token");
-          const { data } = await axios.post(
-            "https://ayumallecomstore.rushikesh3299.repl.co/wishlist",
-            { product },
-            {
-              headers: {
-                encodedtoken: authToken,
-              },
-            }
-          );
-          setWishlistItems(data.wishlist);
-          toast.success("Item added to wishlist", {
-            duration: 2000,
-            position: "top-right",
-          });
-        } catch (error) {
-          console.error(error);
-        }
+      try {
+        const authToken = localStorage.getItem("token");
+        const { data } = await axios.post(
+          "https://ayumallecomstore.rushikesh3299.repl.co/wishlist",
+          product,
+          {
+            headers: {
+              encodedtoken: authToken,
+            },
+          }
+        );
+        setWishlistItems(data.wishlist);
+        toast.success("Item added to wishlist", {
+          duration: 2000,
+          position: "top-right",
+        });
+      } catch (error) {
+        console.error(error);
       }
+      // }
     } else {
       toast("Please login first", {
         duration: 2000,
@@ -62,7 +61,6 @@ const WishlistProvider = ({ children }) => {
   };
 
   const removeItemFromWishlist = async (itemId) => {
-    console.log(itemId);
     try {
       const authToken = localStorage.getItem("token");
       const { data } = await axios.delete(
@@ -85,9 +83,9 @@ const WishlistProvider = ({ children }) => {
     }
   };
 
-  const checkItemInWiishlist = (itemId) => {
-    return wishlistItems.some((item) => item._id === itemId);
-  };
+  // const checkItemInWiishlist = (itemId) => {
+  //   return wishlistItems.some((item) => item._id === itemId);
+  // };
 
   useEffect(() => {
     if (userData.isLoggedIn) {

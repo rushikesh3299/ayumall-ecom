@@ -27,18 +27,11 @@ const CartProvider = ({ children }) => {
   };
 
   const addToCart = async (product) => {
-    // const checkItemAlreadyPresent = checkItemInCart(product._id);
-
-    // if (checkItemAlreadyPresent) {
-    //   increaseItemQty(product._id);
-    // } else {
-    //   addNewItemToCart(product);
-    // }
     try {
       const authToken = localStorage.getItem("token");
       const { data } = await axios.post(
         "https://ayumallecomstore.rushikesh3299.repl.co/cart",
-        { product },
+        product,
         {
           headers: {
             encodedtoken: authToken,
@@ -55,50 +48,6 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  // const addNewItemToCart = async (product) => {
-  //   try {
-  //     const authToken = localStorage.getItem("token");
-  //     const { data } = await axios.post(
-  //       "/api/user/cart",
-  //       { product },
-  //       {
-  //         headers: {
-  //           authorization: authToken,
-  //         },
-  //       }
-  //     );
-  //     setCartItems(data.cart);
-  //     toast.success("Item added to cart", {
-  //       duration: 2000,
-  //       position: "top-right",
-  //     });
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // const increaseItemQty = async (itemId) => {
-  //   try {
-  //     const authToken = localStorage.getItem("token");
-  //     const { data } = await axios.post(
-  //       "/api/user/cart/" + itemId,
-  //       { action: { type: "increment" } },
-  //       {
-  //         headers: {
-  //           authorization: authToken,
-  //         },
-  //       }
-  //     );
-  //     setCartItems(() =>
-  //       cartItems.map((item) =>
-  //         item._id == itemId ? { ...item, qty: item.qty + 1 } : item
-  //       )
-  //     );
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
   const decreaseItemQty = async (item) => {
     if (item.qty <= 1) {
       removeItemFromCart(item._id);
@@ -110,7 +59,7 @@ const CartProvider = ({ children }) => {
           { action: { type: "decrement" } },
           {
             headers: {
-              authorization: authToken,
+              encodedtoken: authToken,
             },
           }
         );
@@ -130,31 +79,23 @@ const CartProvider = ({ children }) => {
   const removeItemFromCart = async (itemId) => {
     try {
       const authToken = localStorage.getItem("token");
-      const { data } = await axios.delete("api/user/cart/" + itemId, {
-        headers: {
-          authorization: authToken,
-        },
-      });
+      const { data } = await axios.delete(
+        "https://ayumallecomstore.rushikesh3299.repl.co/cart/" + itemId,
+        {
+          headers: {
+            encodedtoken: authToken,
+          },
+        }
+      );
       setCartItems(() => cartItems.filter((item) => item._id != itemId));
     } catch (error) {
       console.error(error);
     }
   };
 
-  // const checkItemInCart = (itemId) => {
-  //   let itemPresent = false;
-  //   cartItems.forEach((item) => {
-  //     if (item._id == itemId) {
-  //       itemPresent = true;
-  //     }
-  //   });
-  //   return itemPresent;
-  // };
-
   useEffect(() => {
     if (userData.isLoggedIn) {
       getCartItems(userData);
-      console.log("run");
     } else {
       setCartItems([]);
     }

@@ -2,7 +2,8 @@ import { useLogin } from "../../context";
 import "./profilepage.css";
 
 export const ProfilePage = () => {
-  const { logoutHandler, userName } = useLogin();
+  const { logoutHandler } = useLogin();
+  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
   return (
     <>
       <div className="profile-container">
@@ -15,15 +16,15 @@ export const ProfilePage = () => {
         <div className="profile-details-container">
           <div className="profile-details">
             <div>First Name: </div>
-            <div>{userName.firstName}</div>
+            <div>{userDetails.firstname}</div>
           </div>
           <div className="profile-details">
             <div>Last Name: </div>
-            <div>{userName.lastName}</div>
+            <div>{userDetails.lastname}</div>
           </div>
           <div className="profile-details">
             <div>Email Id: </div>
-            <div>{userName.email}</div>
+            <div>{userDetails.email}</div>
           </div>
         </div>
       </div>
